@@ -1,0 +1,281 @@
+/* 全体設定 */
+body {
+  font-family: 'Kiwi Maru', serif; /* フォントはGoogle Fontsからインポート */
+  margin: 0;                       /* マージンをリセット */
+  padding: 0;                      /* 余白をリセット */
+  background: #ffffff;           /* 背景色 */
+  color: #000000;                   /* 文字色 */
+  display: flex;                   /* フレックスボックスで中央寄せ */
+  flex-direction: column;          /* 縦並び */
+  align-items: center;             /* 中央寄せ */
+  min-height: 200vh;  /* ページを3画面分の高さにする（必要ならもっと増やしてOK） */
+  background-image: url('bg-strata.jpg'); /* 背景画像 */
+  background-repeat: no-repeat;    /* 繰り返さない */
+  background-position: top center; /* 上中央に配置 */
+  background-size: auto 300vh;     /* 縦を画面3つ分の高さに合わせる */
+  background-attachment: scroll;   /* スクロール時に背景が動くようにする */
+  padding-top: 200px; /* ヘッダーの高さ分 */
+}
+
+/* アニメーション */
+.fade-in {
+  opacity: 0; /* 初期非表示 */
+  transform: translateY(30px); /* 下から上に */
+  animation: fadeInUp 1.5s ease forwards; /* 1.5秒で上に移動しながら表示 */
+}
+
+@keyframes fadeInUp {   
+  to {
+    opacity: 1; /* 完全表示 */
+    transform: translateY(0); /* 元の位置に戻る */
+  }
+}
+
+/* ヘッダー */
+header {
+  position: fixed;
+  top: 0; /* 上に固定 */
+  left: 0; /* 左に固定 */
+  width: 100%; /* 幅100% */
+  background: rgba(143, 100, 44, 0.9); /* 半透明の茶色 */
+  z-index: 999;   /* ヘッダーを最前面に */
+  padding: 1rem 0; /* 上下の余白 */
+  text-align: center; /* 中央寄せ */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* 影をつける */
+  backdrop-filter: blur(8px); /* 背景をぼかす */
+}
+
+/* ヘッダー内のロゴリンク（竹田Tキャンプ） */
+.logo {
+  font-size: 1.8rem;      /* フォントサイズ */
+  font-weight: bold;     /* 太字 */
+  color: #333;         /* 色 */
+  text-decoration: none; /* 下線を消す */
+  display: inline-block; /* インラインブロック */
+  margin: 0 auto;       /* 中央寄せ */
+}
+
+.logo:hover {
+  color: #555;       /* ホバー時の色 */
+}
+
+h1 {
+  font-size: 2.5rem;       /* タイトルのフォントサイズ */
+  margin-bottom: 0.5rem;   /* タイトルの下のマージン */
+}
+
+p {
+  font-size: 1.1rem;      /* 説明文のフォントサイズ */
+  color: #ffffff;          /* 説明文の色 */
+}
+
+/* ボタングリッド */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+/* ナビゲーションボタン */
+.nav-button {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-button img {
+  width: 48px; /* アイコンのサイズ */
+  height: 48px; /* アイコンのサイズ */
+  margin-bottom: 0.5rem; /* 画像と文字の間隔 */
+  transition: transform 0.2s ease; /* ホバー時の変化 */
+}
+
+.nav-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nav-button:hover img {
+  transform: scale(1.2);
+}
+
+.nav-button span {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* フッター */
+footer {
+  margin-top: auto;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* タグライン スマホ用設定 */
+
+@media screen and (max-width: 768px) {  
+  .button-grid {
+    grid-template-columns: 1fr 1fr; /* スマホは2列表示 */
+    gap: 1rem; /* スマホ用の間隔 */
+    width: 95%; /* スマホ用の幅 */
+    margin: 0 auto; /* 中央寄せ */
+  }
+
+  .nav-button {
+    padding: 1.2rem; /* スマホ用のパディング */
+    font-size: 1rem; /* スマホ用のフォントサイズ */
+    display: flex; /* フレックスボックスで中央寄せ */
+    flex-direction: column; /* 縦並び */
+    align-items: center; /* 中央寄せ */
+  }
+
+  .nav-button img {
+    width: 36px; /* スマホ用の画像サイズ */
+    height: 36px; /* スマホ用の画像サイズ */
+    margin-bottom: 0.5rem; /* スマホ用の画像と文字の間隔 */
+  }
+
+  .back-to-top {
+    bottom: 10px; /* スマホ用の位置 */
+    right: 10px; /* スマホ用の位置 */
+    font-size: 1.2rem; /* スマホ用のフォントサイズ */
+    padding: 0.6rem 1rem; /* スマホ用のパディング */
+  }
+
+  .tagline {
+    font-size: 1rem; /* スマホ用のフォントサイズ */
+    padding: 0 1rem; /* スマホ用のパディング */
+    text-align: center; /* 中央寄せ */
+  }
+}
+
+
+/* 恐竜カードの横並びレイアウト */
+.dino-card {
+  display: flex;
+  flex-direction: row; /* 横並び！ */
+  justify-content: center; /* 文字を中央に */
+  align-items: center; /* 画像と文字を中央に */
+  text-decoration: none; /* リンクの下線を消す */
+  background: rgba(255, 255, 255, 0.9); /* 半透明の白 */
+  border-radius: 1rem; /* 角を丸く */
+  padding: 1rem 1.5rem; /* 内側の余白 */
+  width: 300px;      /* カードの幅 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 影 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* ホバー時の変化 */
+  opacity: 0;                /* 初期非表示 */
+  transform: translateY(20px); /* 下から上に */
+  animation: fadeInUp 0.5s ease-out forwards; /* アニメーション */
+}
+
+/* カード内の画像と文字のレイアウト */
+.dino-card img {
+  width: 60px;       /* 画像の幅 */
+  height: auto;     /* 高さは自動調整 */
+  margin-right: 1rem;   /* 画像と文字の間隔 */
+}
+.dino-card span {
+  color: #333;        /* 文字色 */
+  font-size: 1.2rem;    /* フォントサイズ */
+  font-weight: bold;    /* 太字 */
+}
+
+/* ホバー時のエフェクト */
+.dino-card:hover { 
+  transform: scale(1.05); /* 拡大 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* 影を強く */
+}
+
+/* アニメーション（順番にふわっと出る） */
+@keyframes fadeInUp {
+  to {
+    opacity: 1; /* 完全表示 */
+    transform: translateY(0); /* 元の位置に戻る */
+  }
+}
+
+.fade-in:nth-child(1) {   /* 最初の要素 */
+  animation-delay: 0.1s;  /* 0.1秒後に表示 */
+}
+.fade-in:nth-child(2) {   /* 2番目の要素 */
+  animation-delay: 0.3s;  /* 0.3秒後に表示 */
+}
+.fade-in:nth-child(3) {   /* 3番目の要素 */
+  animation-delay: 0.5s;  /* 0.5秒後に表示 */
+}
+
+.fade-in:nth-child(4) {   /* 4番目の要素 */
+  animation-delay: 0.7s;  /* 0.7秒後に表示 */
+}
+
+.fade-in:nth-child(5) {   /* 5番目の要素 */
+  animation-delay: 0.9s;  /* 0.9秒後に表示 */
+}
+
+.fade-in:nth-child(6) {   /* 6番目の要素 */
+  animation-delay: 1.1s;  /* 1.1秒後に表示 */
+}
+
+.fade-in:nth-child(7) {   /* 7番目の要素 */
+  animation-delay: 1.3s;  /* 1.3秒後に表示 */
+}
+
+
+
+.back-to-top { 
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ffffffcc;
+  color: #333;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+.back-to-top img {
+  width: 20px;
+  height: 20px;
+}
+.back-to-top:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+  .nav,
+  .dino-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav a,
+  .dino-card {
+    width: 90%;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .back-to-top {
+    bottom: 10px;
+    right: 10px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
